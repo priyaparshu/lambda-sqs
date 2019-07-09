@@ -13,7 +13,7 @@ module.exports.sender = (event, context, callback) => {
   var responseBody = {
     message: ''
   };
-  var responseCode = 200;
+
 
   // SQS message parameters
   var params = {
@@ -26,6 +26,7 @@ module.exports.sender = (event, context, callback) => {
       console.log('error:', "failed to send message" + err);
       var responseCode = 500;
     } else {
+      var responseCode = 200;
       console.log('data:', data.MessageId);
       responseBody.message = 'Sent to ' + queueUrl;
       responseBody.messageId = data.MessageId;
