@@ -67,7 +67,7 @@ functions:
     events:
       - http:
           path: sender
-          method: post
+          method: get
   receiver:
     handler: handler.receiver
     events:
@@ -76,6 +76,7 @@ functions:
             Fn::GetAtt:
               - MyQueue
               - Arn
+          batchSize: 1
 
 
 #    The following are a few example events you can configure
